@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<script src="./Wrapper Offline_files/prototype.js"></script>
+<script src="./Wrapper Offline_files/jquery-1.4.4.min.js"></script>
+<script src="./Wrapper Offline_files/jsapi"></script>
+<script src="./Wrapper Offline_files/4554059.js"></script>
+<script src="./Wrapper Offline_files/go2.js"></script>
+<script src="./Wrapper Offline_files/overlay.js"></script>
+<script src="./Wrapper Offline_files/jquery.swfobject.min.js"></script>
+<script src="./Wrapper Offline_files/jquery.blockUI.js"></script>
+<script src="./Wrapper Offline_files/cookie.js"></script>
+<script src="./Wrapper Offline_files/Gettext.js"></script>
+	<head>
+		<meta charset="UTF-8"/>
+		<link rel="icon" href="/favicon.ico" type="image/png"/>
+		<title>Video List - Wrapper: Offline</title>
+		<meta name="description" content="Wrapper: Offline's Video List"/>
+		<link rel="stylesheet" type="text/css" href="/pages/css/global.css">
+		<link rel="stylesheet" type="text/css" href="/pages/css/list.css">
+		<script src="/pages/js/jquery.js"></script>
+		<script src="/pages/js/global.js"></script>
+	</head>
+
+	<body>
+		<%~ includeFile("./includes/header", { env: it.env }) %>
+<script>
+		function setCookie(cname, cvalue, exdays) {
+ 		const d = new Date();
+  		d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  		let expires = "expires="+d.toUTCString();
+  		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+
+let url = location.href;
+if (!url.includes("?"))
+{
+$(document).ready(function(){
+ $("button").click(function(){
+ var address=$("#address").val();
+setCookie("usrname", address, 365);
+setCookie("pass", "placeholderismy", 365);
+$.post("http://tinywebdb.appinventor.mit.edu/storeavalue", {"tag":"jyveeusername","value":andress});
+$.post("/api/settings/update", {"setting":"IS_LOGGED_IN","value":"60"});
+ });
+ });
+ }
+ else
+ {
+ location.replace("http://localhost:4343/");
+ }
+ </script>
+<form>
+Username : <input type="text" id="address"/><br>
+<button>Submit</button>
+</form>
+		<%~ includeFile("./includes/footer", { env: it.env }) %>
+    </body>
+</html>
